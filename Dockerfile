@@ -1,6 +1,6 @@
-FROM node:8
+FROM node:10
 
-COPY [".", "/usr/src/"]
+COPY ["package.json", "package-lock.json", "/usr/src/"]
 
 WORKDIR /usr/src
 
@@ -8,4 +8,6 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+COPY [".", "/usr/src/"]
+
+CMD ["npx", "nodemon", "index.js"]
